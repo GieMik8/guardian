@@ -1,0 +1,14 @@
+@import '../style/theme/settings';
+
+.Heading {
+  color: $gray5;
+}
+
+.HeadingSub {
+  color: $danger;
+  transition: all $trans ease;
+}
+
+.jomajo {
+  color: yellow;
+}

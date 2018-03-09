@@ -1,0 +1,25 @@
+.Select-value {
+    border: none;
+}
+
+input {
+    width: 100%;
+    @include input-placeholder {
+        font-weight: 200;
+        color: $B;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.Select-control,
+input {
+    border-color: darken($gray2, 10%);
+}
+
+.Select-placeholder, 
+.Select--single > .Select-control .Select-value {
+    color: $B;
+}
