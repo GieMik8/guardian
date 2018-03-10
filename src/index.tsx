@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, Store } from 'redux';
 import { Provider } from 'react-redux';
 
 import Guardian from './containers/Guardian';
@@ -10,7 +10,7 @@ import { StoreState } from './types/index';
 import './style/grid.scss';
 import './style/style.scss';
 
-const store = createStore<StoreState>(guardian, {
+const store: Store<StoreState> = createStore<StoreState>(guardian, {
   sections: []
 });
 

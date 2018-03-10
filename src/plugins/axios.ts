@@ -1,16 +1,16 @@
 import axios, { AxiosRequestConfig, AxiosPromise, AxiosInstance, AxiosError } from 'axios';
 
-import { API_KEY, BASE_URL } from './options'; 
+import settings from '../environment';
 
 const instance: AxiosInstance = axios.create({
-    baseURL: BASE_URL
+    baseURL: settings.BASE_URL
 });
 
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     config.params = {
       ...config.params,
-      'api-key': API_KEY
+      'api-key': settings.API_KEY
     };
     return config;
   },

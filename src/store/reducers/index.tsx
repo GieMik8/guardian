@@ -1,4 +1,3 @@
-
 import * as Actions from '../actions';
 import { StoreState } from '../../types/index';
 import * as Constants from '../constants/index';
