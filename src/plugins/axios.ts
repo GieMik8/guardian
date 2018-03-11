@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosPromise, AxiosInstance, AxiosError } from 'axios';
 
-import settings from '../environment';
+import settings from '~environment/index';
 
 const instance: AxiosInstance = axios.create({
     baseURL: settings.BASE_URL

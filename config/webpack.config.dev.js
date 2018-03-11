@@ -23,6 +23,10 @@ const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
@@ -94,12 +98,22 @@ module.exports = {
       '.json',
       '.web.jsx',
       '.jsx',
+      '.scss',
+      '.css'
     ],
     alias: {
       
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      '~src': resolve('src'),
+      '~style': resolve('src/style'),
+      '~containers': resolve('src/containers'),
+      '~environment': resolve('src/environment'),
+      '~helpers': resolve('src/helpers'),
+      '~plugins': resolve('src/plugins'),
+      '~store': resolve('src/store'),
+      '~types': resolve('src/types'),
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

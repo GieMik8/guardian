@@ -3,19 +3,19 @@ import { AxiosResponse } from 'axios';
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
 
-import * as Actions from '../store/actions';
-import { StoreState } from '../types/index';
-import axios from '../plugins/axios';
-import { Section } from '../types/index';
+import * as Actions from '~store/actions';
+import { StoreState } from '~types/index';
+import axios from '~plugins/axios';
+import { Section } from '~types/index';
 
 import * as styles from './Guardian.scss';
 
-export interface Props {
+interface Props {
   onSetSections: () => void;
   sections: Section[];
 }
 
-export interface State {
+interface State {
   title: string;
 }
 
@@ -72,5 +72,5 @@ class Guardian extends React.Component<Props, State> {
   }
 }
 
-// tslint:disable-next-line:no-any
+// tslint:disable-next-line: no-any
 export default connect(mapStateToProps, mapDispatchToProps)(Guardian as any);

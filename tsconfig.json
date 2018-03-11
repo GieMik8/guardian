@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "outDir": "build/dist",
     "module": "commonjs",
     "target": "es5",
@@ -9,10 +10,21 @@
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
+    "noResolve": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "~src/*": ["*"],
+      "~style/*": ["style/*"],
+      "~containers/*": ["containers/*"],
+      "~environment/*": ["environment/*"],
+      "~helpers/*": ["helpers/*"],
+      "~plugins/*": ["plugins/*"],
+      "~store/*": ["store/*"],
+      "~types/*": ["types/*"]
+    }
   },
   "exclude": [
     "node_modules",

@@ -1,6 +1,6 @@
 
 import * as constants from '../constants';
-import { Section } from '../../types';
+import { Section } from '~types/index';
 
 export interface SetSections {
   type: constants.SET_SECTIONS;
