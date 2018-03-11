@@ -54,5 +54,13 @@ module.exports = {
   appTsLint: resolveApp('tslint.json'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
-  globalScssPath: resolveApp('src/style')
+  globalScssPath: resolveApp('src/style'),
+  src: resolveApp('src'),
+  srcStyle: resolveApp('src/style'),
+  srcContainers: resolveApp('src/containers'),
+  srcEnvironment: resolveApp('src/environment'),
+  srcHelpers: resolveApp('src/helpers'),
+  srcPlugins: resolveApp('src/plugins'),
+  srcStore: resolveApp('src/store'),
+  srcTypes: resolveApp('src/types'),
 };
