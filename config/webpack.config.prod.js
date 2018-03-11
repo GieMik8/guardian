@@ -115,7 +115,8 @@ module.exports = {
       '~helpers': paths.srcHelpers,
       '~plugins': paths.srcPlugins,
       '~store': paths.srcStore,
-      '~types': paths.srcTypes
+      '~types': paths.srcTypes,
+      '~services': paths.srcServices
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosPromise, AxiosInstance, AxiosError } from 'axios';
+import axios, { AxiosRequestConfig, AxiosPromise, AxiosInstance, AxiosError, AxiosResponse } from 'axios';
 
 import settings from '~environment/index';
 
@@ -9,12 +9,18 @@ const instance: AxiosInstance = axios.create({
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     config.params = {
+      'api-key': settings.API_KEY,
       ...config.params,
-      'api-key': settings.API_KEY
     };
     return config;
   },
+  (error: AxiosError) => Promise.reject(error)
+);
+
+instance.interceptors.response.use(
+  (response: AxiosResponse) => response,
   (error: AxiosError) => {
+    // TODO: Handle errors
     return Promise.reject(error);
   }
 );

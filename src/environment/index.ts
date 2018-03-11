@@ -1,4 +1,4 @@
-import { inDevelopment } from '../helpers';
+import { inDevelopment } from '~helpers/index';
 import * as devEnvironment from './environment.dev';
 import * as prodEnvironment from './environment.prod';
 

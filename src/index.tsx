@@ -3,20 +3,21 @@ import * as ReactDOM from 'react-dom';
 import { createStore, Store } from 'redux';
 import { Provider } from 'react-redux';
 
-import Guardian from './containers/Guardian';
-import { guardian } from './store/reducers/index';
-import { StoreState } from './types/index';
+import App from './App';
+import { guardian } from './store/reducers';
+import { StoreState, SelectedEdition } from './types';
 
 import './style/grid.scss';
 import './style/style.scss';
 
 const store: Store<StoreState> = createStore<StoreState>(guardian, {
-  sections: []
+  sections: [],
+  selectedEdition: new SelectedEdition()
 });
 
 ReactDOM.render(
   <Provider store={store}>
-    <Guardian />
+    <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
