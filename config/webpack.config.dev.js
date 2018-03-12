@@ -99,7 +99,8 @@ module.exports = {
       '.web.jsx',
       '.jsx',
       '.scss',
-      '.css'
+      '.css',
+      '.svg'
     ],
     alias: {
       
@@ -140,9 +141,6 @@ module.exports = {
         include: paths.appSrc,
       },
       {
-
-      },
-      {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
@@ -171,6 +169,11 @@ module.exports = {
                 },
               },
             ],
+          },
+          {
+            test: /\.svg$/,
+            loader: 'svg-inline-loader',
+            options: {}
           },
           {
             test: /\.scss$/,

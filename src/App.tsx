@@ -58,16 +58,16 @@ class App extends React.Component<Props, void> {
     return (
       <div className={styles.bodyWrapper}>
         <div className={styles.bodyInner}>
-          <div className={styles.bodySidemenu}>
+          <aside className={styles.bodySidemenu}>
             <SideMenu setEdition={this.props.setEdition} sections={this.props.sections}/>
-          </div>
+          </aside>
           <div ref={ref => this.bodyMainContainer = ref} className={styles.bodyMain}>
-            <div className={styles.bodyHeader}>
+            <header className={styles.bodyHeader}>
               <Header />
-            </div>
-            <div className={styles.bodyContent}>
+            </header>
+            <main className={styles.bodyContent}>
               <Content selectedEdition={this.props.selectedEdition}/>
-            </div>
+            </main>
           </div>
         </div>
       </div>

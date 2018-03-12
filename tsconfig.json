@@ -38,5 +38,8 @@
   ],
   "types": [
     "typePatches"
-  ]
+  ],
+  "typeAcquisition": {
+    "enable": false
+  }
 }
