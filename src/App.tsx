@@ -2,6 +2,8 @@ import { connect, Dispatch } from 'react-redux';
 import { AxiosResponse } from 'axios';
 import * as React from 'react';
 import PerfectScrollbar from 'perfect-scrollbar';
+import * as ReactDOM from 'react-dom';
+import { Route, BrowserRouter as Router, Link, match } from 'react-router-dom';
 
 import * as Actions from '~store/actions';
 import { StoreState, SelectedEdition, Section } from '~types';
@@ -11,6 +13,8 @@ import * as service from '~services/guardian';
 import SideMenu from '~containers/side-menu/SideMenu';
 import Header from './components/header/Header';
 import Content from './components/content/Content';
+import Home from './components/home/Home';
+import Articles from './components/articles/Articles';
 
 import * as styles from './App.scss';
 
@@ -57,19 +61,26 @@ class App extends React.Component<Props, void> {
   render() {
     return (
       <div className={styles.bodyWrapper}>
-        <div className={styles.bodyInner}>
-          <aside className={styles.bodySidemenu}>
-            <SideMenu setEdition={this.props.setEdition} sections={this.props.sections}/>
-          </aside>
-          <div ref={ref => this.bodyMainContainer = ref} className={styles.bodyMain}>
-            <header className={styles.bodyHeader}>
-              <Header />
-            </header>
-            <main className={styles.bodyContent}>
-              <Content selectedEdition={this.props.selectedEdition}/>
-            </main>
+        <Router>
+          <div className={styles.bodyInner}>
+            <aside className={styles.bodySidemenu}>
+              <SideMenu setEdition={this.props.setEdition} sections={this.props.sections}/>
+            </aside>
+            <div ref={ref => this.bodyMainContainer = ref} className={styles.bodyMain}>
+              <header className={styles.bodyHeader}>
+                <Header />
+              </header>
+              <main className={styles.bodyContent}>
+                <div>
+                  <Route exact={true} path="/" component={Home} />
+                  {/* <Route exact={true} path="/details/:id" component={(props) => <Articles />} /> */}
+                  <Route exact={true} path="/articles/:id" component={Articles} />
+                </div>
+                {/* <Content selectedEdition={this.props.selectedEdition}/> */}
+              </main>
+            </div>
           </div>
-        </div>
+        </Router>
       </div>
     );
   }

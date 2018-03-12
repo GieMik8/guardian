@@ -28,7 +28,6 @@ $sideMenuWidth: 250px;
 }
 
 .bodyMain {
-  color: yellow;
   position: relative;
   margin-left: $sideMenuWidth + 15px;
   height: 100vh;
@@ -36,7 +35,7 @@ $sideMenuWidth: 250px;
 }
 
 .bodyHeader {
-  color: blue;
+  font-weight: 700;
 }
 
 .bodyContent {
