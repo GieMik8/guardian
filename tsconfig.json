@@ -18,7 +18,6 @@
     "paths": {
       "~src/*": ["*"],
       "~style/*": ["style/*"],
-      "~components": ["components/*"],
       "~containers/*": ["containers/*"],
       "~environment/*": ["environment/*"],
       "~helpers/*": ["helpers/*"],

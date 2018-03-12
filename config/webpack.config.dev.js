@@ -178,13 +178,16 @@ module.exports = {
             use: [
               require.resolve('style-loader'),
               {
-                loader: require.resolve('css-loader'),
+                loader: "typings-for-css-modules-loader",
                 options: {
-                  modules: true,
-                  importLoaders: 1,
-                  camelCase: true,
-                  localIdentName: '[name]_[local]_[hash:base64:5]'
-                },
+                    namedExport: true,
+                    camelcase: true,
+                    modules: true,
+                    scss: true,
+                    importLoaders: 1,
+                    banner: '/* This is style definitions - keep this file untouched */',
+                    localIdentName: '[name]_[local]_[hash:base64:5]'
+                }
               },
               {
                 loader: require.resolve('sass-loader'),
@@ -208,12 +211,6 @@ module.exports = {
                     }),
                   ],
                 },
-              },
-              {
-                loader: 'typed-css-modules-loader',
-                options: {
-                  camelCase: true
-                }
               }
             ],
           },

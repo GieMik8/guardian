@@ -13,13 +13,3 @@ input {
         outline: none;
     }
 }
-
-.Select-control,
-input {
-    border-color: darken($gray2, 10%);
-}
-
-.Select-placeholder, 
-.Select--single > .Select-control .Select-value {
-    color: $B;
-}

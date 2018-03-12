@@ -175,14 +175,16 @@ module.exports = {
             use: [
               require.resolve('style-loader'),
               {
-                loader: require.resolve('css-loader'),
+                loader: "typings-for-css-modules-loader",
                 options: {
-                  modules: true,
-                  importLoaders: 1,
-                  camelCase: true,
-                  localIdentName: '[name]_[local]_[hash:base64:5]',
-                  sourceMap: shouldUseSourceMap,
-                },
+                    namedExport: true,
+                    camelcase: true,
+                    modules: true,
+                    importLoaders: 1,
+                    scss: true,
+                    localIdentName: '[name]_[local]_[hash:base64:5]',
+                    sourceMap: shouldUseSourceMap,
+                }
               },
               {
                 loader: require.resolve('sass-loader'),

@@ -8,6 +8,7 @@ const instance: AxiosInstance = axios.create({
 
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
+    // Add Api Key to every request
     config.params = {
       'api-key': settings.API_KEY,
       ...config.params,

@@ -1,10 +1,43 @@
 @import '~style/theme/settings';
 
-.Heading {
-  color: $gray5;
+$sideMenuWidth: 250px;
+
+.bodyWrapper, .bodyInner {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
-.HeadingSub {
-  color: $danger;
-  transition: all $trans ease;
+.bodyWrapper {
+
+}
+
+.bodyInner {
+  color: orange;
+}
+
+.bodySidemenu {
+  width: $sideMenuWidth;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.bodyMain {
+  color: yellow;
+  position: relative;
+  margin-left: $sideMenuWidth + 15px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bodyHeader {
+  color: blue;
+}
+
+.bodyContent {
+  color: yellow;
+  height: 130vh;
 }

@@ -57,7 +57,6 @@ module.exports = {
   globalScssPath: resolveApp('src/style'),
   src: resolveApp('src'),
   srcStyle: resolveApp('src/style'),
-  srcComponents: resolveApp('src/components'),
   srcContainers: resolveApp('src/containers'),
   srcEnvironment: resolveApp('src/environment'),
   srcHelpers: resolveApp('src/helpers'),

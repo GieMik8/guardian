@@ -7,8 +7,8 @@ import App from './App';
 import { guardian } from './store/reducers';
 import { StoreState, SelectedEdition } from './types';
 
-import './style/grid.scss';
-import './style/style.scss';
+import '~style/grid.scss';
+import '~style/style.scss';
 
 const store: Store<StoreState> = createStore<StoreState>(guardian, {
   sections: [],
