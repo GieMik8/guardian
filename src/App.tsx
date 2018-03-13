@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
 import { AxiosResponse } from 'axios';
-import * as React from 'react';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Link, match } from 'react-router-dom';
@@ -14,7 +14,7 @@ import SideMenu from '~containers/side-menu/SideMenu';
 import Header from './components/header/Header';
 import Content from './components/content/Content';
 import Home from './components/home/Home';
-import Articles from './components/articles/Articles';
+import asyncComponent from './components/async-component/AsyncComponent';
 
 import * as styles from './App.scss';
 
@@ -43,6 +43,10 @@ const mapDispatchToProps = (dispatch: Dispatch<Actions.Actions>) => {
     }
   };
 };
+
+const AsyncArticles = asyncComponent(() => {
+  return import(/* webpackChunkName = "articles" */'./containers/articles/Articles');
+});
 
 class App extends React.Component<Props, void> {
   // tslint:disable-next-line: no-any
@@ -74,7 +78,7 @@ class App extends React.Component<Props, void> {
                 <div>
                   <Route exact={true} path="/" component={Home} />
                   {/* <Route exact={true} path="/details/:id" component={(props) => <Articles />} /> */}
-                  <Route exact={true} path="/articles/:id" component={Articles} />
+                  <Route exact={true} path="/articles/:id" component={AsyncArticles} />
                 </div>
                 {/* <Content selectedEdition={this.props.selectedEdition}/> */}
               </main>

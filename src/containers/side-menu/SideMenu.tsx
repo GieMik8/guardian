@@ -41,7 +41,6 @@ class SideMenu extends React.Component<Props, State> {
       <Link
         to={`/articles/${x.id}`}
         className={styles.item}
-        onClick={() => this.props.setEdition(x.id)} 
         key={index}
       >
         <span className={styles.itemTitle}>{x.webTitle}</span>
@@ -53,10 +52,12 @@ class SideMenu extends React.Component<Props, State> {
 
     return (
       <div className={styles.sideMenu}>
-        <div className={styles.heading + ' ms_t-center'}>
-          <Icon classes={[styles.logo]} icon={Logo}/>
-          <h2 className={styles.slogan}>{this.state.slogan}</h2>
-        </div>
+        <Link to="/">
+          <div className={styles.heading + ' ms_t-center'}>
+            <Icon classes={[styles.logo]} icon={Logo}/>
+            <h2 className={styles.slogan}>{this.state.slogan}</h2>
+          </div>
+        </Link>
         <div className={styles.menu} ref={ref => this.sideMenuContainer = ref}>
           {sectionListWrapper}
           <footer>
