@@ -2,22 +2,43 @@ import * as React from 'react';
 import { Section } from '~types';
 import PerfectScrollbar from 'perfect-scrollbar';
 import { Link } from 'react-router-dom';
+import { Dispatch } from 'redux';
+import { AxiosResponse } from 'axios';
+import { connect } from 'react-redux';
 
+import * as Actions from '~store/actions';
 import * as styles from './SideMenu.scss';
 import Icon from '../../components/icon/Icon';
 import settings from '~environment/index';
+import { SelectedEdition, StoreState } from '~types';
+import * as service from '~services/guardian';
 
 const Logo = require('../../assets/logo.svg');
-
-interface Props {
-  sections: Section[];
-  setEdition: (id: string) => void;
-}
 
 interface State {
   slogan: string;
   version: number;
 }
+
+interface Props {
+  setSections: () => void;
+  sections: Section[];
+  selectedEdition: SelectedEdition;
+}
+
+const mapStateToProps = ({ sections, selectedEdition }: StoreState) => {
+  return { sections, selectedEdition };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<Actions.Actions>) => {
+  return {
+    setSections: () => {
+      service.getSections().then((response: AxiosResponse) => {
+        dispatch(Actions.setSections(response.data.response.results));
+      });
+    }
+  };
+};
 
 class SideMenu extends React.Component<Props, State> {
   // tslint:disable-next-line: no-any
@@ -37,18 +58,29 @@ class SideMenu extends React.Component<Props, State> {
   }
 
   render() {
-    let sectionsList = this.props.sections.map((x: Section, index: number) => (
-      <Link
-        to={`/articles/${x.id}`}
-        className={styles.item}
-        key={index}
-      >
-        <span className={styles.itemTitle}>{x.webTitle}</span>
-        <span className={styles.itemSubtitle}>{x.id}</span>
-      </Link>
-    ));
+    let sectionsList = this.props.sections.map((x: Section, index: number) => {
+      let linkClasses = styles.item;
+      if (this.props.selectedEdition.edition && x.id === this.props.selectedEdition.edition.id) {
+        linkClasses = styles.activeItem;
+      }
+      return (
+        <Link
+          to={`/articles/${x.id}`}
+          className={linkClasses}
+          key={index}
+        >
+          <span className={styles.itemTitle}>{x.webTitle}</span>
+          {/* <span className={styles.itemSubtitle}>{x.id}</span> */}
+        </Link>
+      );
+    });
 
     let sectionListWrapper = <nav>{sectionsList}</nav>;
+    let editionId;
+
+    if (this.props.selectedEdition.edition && this.props.selectedEdition.edition.id) {
+      editionId = this.props.selectedEdition.edition.id;
+    }
 
     return (
       <div className={styles.sideMenu}>
@@ -69,4 +101,5 @@ class SideMenu extends React.Component<Props, State> {
   }
 }
 
-export default SideMenu;
+// tslint:disable-next-line: no-any
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu as any);

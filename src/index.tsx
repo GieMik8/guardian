@@ -4,7 +4,7 @@ import { createStore, Store } from 'redux';
 import { Provider } from 'react-redux';
 
 import App from './App';
-import { SelectedEdition } from './types';
+import { SelectedEdition, SearchResponse } from './types';
 import configureStore from '~helpers/configure-store';
 
 import '~style/grid.scss';
@@ -12,7 +12,8 @@ import '~style/style.scss';
 
 const store = configureStore({
   sections: [],
-  selectedEdition: new SelectedEdition()
+  selectedEdition: new SelectedEdition(),
+  searchResponse: new SearchResponse()
 });
 
 ReactDOM.render(

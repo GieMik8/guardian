@@ -3,7 +3,13 @@ import { connect, Dispatch } from 'react-redux';
 import { AxiosResponse } from 'axios';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router, Link, match } from 'react-router-dom';
+import { 
+  Route, 
+  BrowserRouter as Router, 
+  Link, 
+  match, 
+  withRouter
+} from 'react-router-dom';
 
 import * as Actions from '~store/actions';
 import { StoreState, SelectedEdition, Section } from '~types';
@@ -11,7 +17,7 @@ import axios from '~plugins/axios';
 import * as service from '~services/guardian';
 
 import SideMenu from '~containers/side-menu/SideMenu';
-import Header from './components/header/Header';
+import Header from '~containers/header/Header';
 import Content from './components/content/Content';
 import Home from './components/home/Home';
 import asyncComponent from './components/async-component/AsyncComponent';
@@ -20,9 +26,12 @@ import * as styles from './App.scss';
 
 interface Props {
   setSections: () => void;
-  setEdition: (id: string) => void;
   sections: Section[];
   selectedEdition: SelectedEdition;
+}
+
+interface State {
+  searchQuery: string;
 }
 
 const mapStateToProps = ({ sections, selectedEdition }: StoreState) => {
@@ -35,11 +44,6 @@ const mapDispatchToProps = (dispatch: Dispatch<Actions.Actions>) => {
       service.getSections().then((response: AxiosResponse) => {
         dispatch(Actions.setSections(response.data.response.results));
       });
-    },
-    setEdition: (id: string) => {
-      service.getEdition(id).then((response: AxiosResponse) => {
-        dispatch(Actions.setSelectedEdition(response.data.response));
-      });
     }
   };
 };
@@ -48,13 +52,20 @@ const AsyncArticles = asyncComponent(() => {
   return import(/* webpackChunkName = "articles" */'./containers/articles/Articles');
 });
 
-class App extends React.Component<Props, void> {
+const AsyncSearch = asyncComponent(() => {
+  return import(/* webpackChunkName = "articles" */'./containers/search/Search');
+});
+
+class App extends React.Component<Props, State> {
   // tslint:disable-next-line: no-any
   private bodyMainContainer: any;
   private bodyMainScrollbar: PerfectScrollbar;
 
   constructor(props: Props) {
     super(props);
+    this.state = {
+      searchQuery: ''
+    };
   }
 
   componentDidMount() {
@@ -68,25 +79,31 @@ class App extends React.Component<Props, void> {
         <Router>
           <div className={styles.bodyInner}>
             <aside className={styles.bodySidemenu}>
-              <SideMenu setEdition={this.props.setEdition} sections={this.props.sections}/>
+              <SideMenu />
             </aside>
-            <div ref={ref => this.bodyMainContainer = ref} className={styles.bodyMain}>
+            <div id="pageBody" ref={ref => this.bodyMainContainer = ref} className={styles.bodyMain}>
               <header className={styles.bodyHeader}>
-                <Header />
+                <Header/>
+                <p>{this.state.searchQuery}</p>
               </header>
               <main className={styles.bodyContent}>
-                <div>
+                <div className="container" >
                   <Route exact={true} path="/" component={Home} />
                   {/* <Route exact={true} path="/details/:id" component={(props) => <Articles />} /> */}
                   <Route exact={true} path="/articles/:id" component={AsyncArticles} />
+                  <Route exact={true} path="/search" component={AsyncSearch} />
                 </div>
-                {/* <Content selectedEdition={this.props.selectedEdition}/> */}
               </main>
             </div>
           </div>
         </Router>
       </div>
     );
+  }
+
+  private searchSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    console.log(this.props);
   }
 }
 

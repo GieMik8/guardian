@@ -17,16 +17,43 @@
   }
 }
 
-.item {
+%item {
   display: block;
   margin-bottom: 10px;
   color: $gray6;
+  border-left: solid 5px transparent;
+  padding: 8px 15px;
+  // padding-left: 15px;
+}
+
+.item {
+  @extend %item;
+  
+  &:hover {
+    border-left-color: $gray4;
+
+    .itemTitle, .itemSubtitle {
+      color: $B;
+    }
+  }
+}
+
+.activeItem {
+  @extend %item;
+  border-left-color: $blue;
+  // background-color: $F;
+
+  .itemTitle, .itemSubtitle {
+    color: $blue;
+  }
 }
 
 .itemTitle {
-  color: $gray6;
+  color: $gray5;
   font-size: 15px;
   display: block;
+  font-weight: 700;
+  line-height: 18px;
 }
 
 .itemSubtitle {
@@ -41,7 +68,7 @@
 }
 
 .menu {
-  padding: 15px;
+  padding: 15px 0 15px 0;
   flex-grow: 1;
   position: relative;
   overflow: hidden;

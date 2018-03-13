@@ -1,0 +1,44 @@
+@import '~style/theme/settings';
+
+.article {
+  border-bottom: solid 1px $gray3;
+  padding: 60px 0 0;
+}
+
+.title {
+  font-size: 25px;
+  color: $B;
+  line-height: 27px;
+  margin-bottom: 5px;
+}
+
+.info {
+  font-size: 16px;
+  color: $gray4;
+
+  span {
+    padding: 0 30px;
+    border-left: solid 1px $gray3;
+    line-height: 20px;
+    display: inline-block;
+
+    &:first-of-type {
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+}
+
+.link {
+  font-size: 22px;
+  color: $gray4;
+  background-color: $F;
+  padding: 10px 0;
+  line-height: 26px;
+  font-weight: 600;
+  word-break: break-all;
+
+  &:hover {
+    color: $blue;
+  }
+}

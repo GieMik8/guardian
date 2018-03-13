@@ -16,3 +16,11 @@ export const getSections = (): AxiosPromise => axios.get('sections');
  * @returns AxiosPromise - with specific edition content
  */
 export const getEdition = (editionId: string): AxiosPromise => axios.get(editionId);
+
+/**
+ * Search in guardian library
+ * 
+ * @param q - search query
+ * @returns AxiosPromise - with specified search results
+ */
+export const search = (q: string): AxiosPromise => axios.get(q);

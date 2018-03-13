@@ -14,6 +14,11 @@ export function guardian(state: StoreState, action: Actions.Actions): StoreState
         ...state,
         selectedEdition: action.selectedEdition
       };
+    case Constants.SET_SEARCH_RESPONSE:
+      return {
+        ...state,
+        searchResponse: action.searchResponse
+      };
     default:
       return state;
   }

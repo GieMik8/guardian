@@ -16,11 +16,23 @@ export class Edition {
 
 export class SelectedEdition {
   currentPage: string;
-  edition: Edition;
+  edition: Edition = new Edition();
   pageSize: 10;
   pages: 2;
   results: Article[];
-  section: Section;
+  section: Section = new Section();
+  startIndex: number;
+  status: string;
+  total: number;
+  userTier: string;
+}
+
+export class SearchResponse {
+  currentPage: string;
+  orderBy: string;
+  pageSize: 10;
+  pages: 2;
+  results: Article[];
   startIndex: number;
   status: string;
   total: number;
@@ -44,4 +56,5 @@ export class Article {
 export interface StoreState {
   sections: Section[];
   selectedEdition: SelectedEdition;
+  searchResponse: SearchResponse;
 }

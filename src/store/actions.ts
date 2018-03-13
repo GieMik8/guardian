@@ -1,6 +1,6 @@
 
 import * as constants from './constants';
-import { Section, SelectedEdition } from '~types';
+import { Section, SelectedEdition, SearchResponse } from '~types';
 
 export interface SetSections {
   type: constants.SET_SECTIONS;
@@ -12,6 +12,11 @@ export interface SetSelectedEdition {
   selectedEdition: SelectedEdition;
 }
 
+export interface SetSearchResponse {
+  type: constants.SET_SEARCH_RESPONSE;
+  searchResponse: SearchResponse;
+}
+
 export const setSections = (sections: Section[]): SetSections => {
   return { type: constants.SET_SECTIONS, sections };
 };
@@ -20,4 +25,8 @@ export const setSelectedEdition = (selectedEdition: SelectedEdition): SetSelecte
   return { type: constants.SET_SELECTED_EDITION, selectedEdition };
 };
 
-export type Actions = SetSections | SetSelectedEdition;
+export const setSearchResponse = (searchResponse: SearchResponse): SetSearchResponse => {
+  return { type: constants.SET_SEARCH_RESPONSE, searchResponse };
+};
+
+export type Actions = SetSections | SetSelectedEdition | SetSearchResponse;
