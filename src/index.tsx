@@ -4,13 +4,13 @@ import { createStore, Store } from 'redux';
 import { Provider } from 'react-redux';
 
 import App from './App';
-import { guardian } from './store/reducers';
-import { StoreState, SelectedEdition } from './types';
+import { SelectedEdition } from './types';
+import configureStore from '~helpers/configure-store';
 
 import '~style/grid.scss';
 import '~style/style.scss';
 
-const store: Store<StoreState> = createStore<StoreState>(guardian, {
+const store = configureStore({
   sections: [],
   selectedEdition: new SelectedEdition()
 });
