@@ -17,7 +17,7 @@ import axios from '~plugins/axios';
 import * as service from '~services/guardian';
 
 import SideMenu from '~containers/side-menu/SideMenu';
-import Header from '~containers/header/Header';
+import SearchForm from '~containers/search-form/SearchForm';
 import Content from './components/content/Content';
 import Home from './components/home/Home';
 import asyncComponent from './components/async-component/AsyncComponent';
@@ -83,7 +83,13 @@ class App extends React.Component<Props, State> {
             </aside>
             <div id="pageBody" ref={ref => this.bodyMainContainer = ref} className={styles.bodyMain}>
               <header className={styles.bodyHeader}>
-                <Header/>
+                <div className="container">
+                  <div className={styles.headerInner}>
+                    <div className="layout sm ms_j-end">
+                      <SearchForm extent="small"/>
+                    </div>
+                  </div>
+                </div>
                 <p>{this.state.searchQuery}</p>
               </header>
               <main className={styles.bodyContent}>

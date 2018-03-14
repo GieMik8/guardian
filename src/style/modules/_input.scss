@@ -3,10 +3,9 @@
 }
 
 input {
-    width: 100%;
     @include input-placeholder {
         font-weight: 200;
-        color: $B;
+        color: $gray4;
     }
 
     &:focus {

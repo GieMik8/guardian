@@ -74,7 +74,7 @@ class Articles extends React.Component<RouteComponentProps<RouteParams> & Props,
       ));
       articleListWrapper = <div>{articleList}</div>;
     } else {
-      articleListWrapper = <p>No articles</p>;
+      articleListWrapper = <p className="notification">No articles</p>;
     }
 
     return (

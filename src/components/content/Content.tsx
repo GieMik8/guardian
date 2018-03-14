@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Content = (props: Props) => {
-  let noArticles = <p>No Articles</p>;
+  let noArticles = <p className="notification">No Articles</p>;
   let articles;
 
   if (props.selectedEdition.results && props.selectedEdition.results.length > 0) {

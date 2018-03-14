@@ -15,9 +15,9 @@ export interface IconProps {
 
 const Icon = (props: IconProps) => {
   let iconClasses = ['svg__icon'];
-  let iconSize: IconSizes = props.size ? props.size : IconSizes.md;
-
-  iconClasses.push(iconSize);
+  if (props.size) {
+    iconClasses.push(props.size);
+  }
   
   if (props.classes && props.classes.length > 0) {
     iconClasses = iconClasses.concat(props.classes);

@@ -5,3 +5,4 @@ export const bodySidemenu: string;
 export const bodyMain: string;
 export const bodyHeader: string;
 export const bodyContent: string;
+export const headerInner: string;

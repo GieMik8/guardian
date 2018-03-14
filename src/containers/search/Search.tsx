@@ -11,6 +11,7 @@ import { StoreState, Section, SelectedEdition, Article, SearchResponse } from '~
 import * as service from '~services/guardian';
 import SingleArticle from '../../components/article/Article';
 import * as styles from './Search.scss';
+import SearchForm from '~containers/search-form/SearchForm';
 
 interface RouteParams {
   q: string;
@@ -76,16 +77,19 @@ class Search extends React.Component<RouteComponentProps<RouteParams> & Props, S
       ));
       articleListWrapper = <div>{articleList}</div>;
     } else {
-      articleListWrapper = <p>No results</p>;
+      articleListWrapper = <p className="notification">No results</p>;
     }
 
     let searchQuery = this.state.search.replace('?q=', '');
 
     return (
       <div className={styles.articles}>
+        <div className={styles.searchForm}>
+          <SearchForm extent="large"/>
+        </div>
         <Element name="heading">
           <h2 className={styles.heading}>
-            Search results: {searchQuery}
+            Search results: <span className="c_blue">{searchQuery}</span>
           </h2>
         </Element>
         {articleListWrapper}

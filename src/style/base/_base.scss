@@ -8,6 +8,13 @@ body {
     padding: 0;
 }
 
+* {
+    @include selection {
+        background-color: $blue;
+        color: $F;
+    }
+}
+
 #root {
     min-height: 100%;
     display: flex;
@@ -97,5 +104,25 @@ ul {
 
     svg {
         max-width: 100%;
+        display: block;
     }
+
+    @each $size, $pix in $iconSizes {
+        &.#{$size} {
+            width: $pix;
+            height: $pix;
+        }
+    }
+}
+
+.notification {
+    margin: 50px 0;
+    padding: 30px;
+    box-shadow: 0 0 50px rgba($B, .1);
+    font-size: 17px;
+    text-align: center;
+}
+
+.c_blue {
+    color: $blue;
 }
