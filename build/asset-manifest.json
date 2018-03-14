@@ -1,0 +1,13 @@
+{
+  "main.css": "static/css/main.731e5e32.css",
+  "main.css.map": "static/css/main.731e5e32.css.map",
+  "main.js": "static/js/main.882ca6d2.js",
+  "main.js.map": "static/js/main.882ca6d2.js.map",
+  "src\\App.scss": "src\\App.scss.d.ts",
+  "src\\components\\article\\Article.scss": "src\\components\\article\\Article.scss.d.ts",
+  "src\\components\\toogle-burger\\ToggleBurger.scss": "src\\components\\toogle-burger\\ToggleBurger.scss.d.ts",
+  "src\\containers\\articles\\Articles.scss": "src\\containers\\articles\\Articles.scss.d.ts",
+  "src\\containers\\search-form\\SearchForm.scss": "src\\containers\\search-form\\SearchForm.scss.d.ts",
+  "src\\containers\\search\\Search.scss": "src\\containers\\search\\Search.scss.d.ts",
+  "src\\containers\\side-menu\\SideMenu.scss": "src\\containers\\side-menu\\SideMenu.scss.d.ts"
+}
