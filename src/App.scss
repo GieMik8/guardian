@@ -1,4 +1,6 @@
 @import '~style/theme/settings';
+@import '~style/helpers/media-queries';
+@import '~style/helpers/mixins';
 
 $sideMenuWidth: 250px;
 
@@ -20,22 +22,49 @@ $sideMenuWidth: 250px;
   width: $sideMenuWidth;
   height: 100vh;
   position: fixed;
-  left: 0;
+  left: -$sideMenuWidth;
   top: 0;
   bottom: 0;
   border-right: solid 1px $gray3;
   background-color: $gray1;
+  transition: left $trans ease;
+  z-index: z('modal');
+
+  @include mq('ts') {
+    left: 0;
+  }
+}
+
+.bodySidemenuOpen {
+  transition: left $trans ease;
+  left: 0;
 }
 
 .bodyMain {
   position: relative;
-  margin-left: $sideMenuWidth + 15px;
   height: 100vh;
   overflow: hidden;
+
+  @include mq('ts') {
+    margin-left: $sideMenuWidth;
+  }
 }
 
 .bodyHeader {
   font-weight: 700;
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $F;
+  border-bottom: solid 1px $gray3;
+  z-index: z('header');
+
+  @include mq('ts') {
+    position: relative;
+    border-bottom: none;
+  }
 }
 
 .bodyContent {
@@ -43,5 +72,24 @@ $sideMenuWidth: 250px;
 }
 
 .headerInner {
-  margin: 15px 0;
+  display: block;
+}
+
+.bodyBackdrop {
+  background-color: rgba($B, .1);
+  z-index: z('backdrop');
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.open {
+  .bodyBackdrop {
+    opacity: 1;
+    pointer-events: all;
+  }
 }

@@ -5,6 +5,7 @@ import * as H from 'history';
 
 import * as styles from './SearchForm.scss';
 import Icon, { IconSizes } from '../../components/icon/Icon';
+import { isBlank } from '~helpers/index';
 
 const SearchIcon = require('../../assets/icons/search.svg');
 
@@ -66,13 +67,15 @@ class SearchForm extends React.Component<RouteComponentProps<RouteParams> & Prop
     );
   }
 
-  public updateSearch(event: React.FormEvent<HTMLInputElement>) {
+  private updateSearch(event: React.FormEvent<HTMLInputElement>) {
     this.setState({ search: event.currentTarget.value });
   }
 
-  public onSearch(event: React.FormEvent<HTMLFormElement>) {
+  private onSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    this.props.history.push(`/search?q=${this.state.search}`);
+    if (!isBlank(this.state.search)) {
+      this.props.history.push(`/search?q=${this.state.search}`);
+    }
   }
 }
 

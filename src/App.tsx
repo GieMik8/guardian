@@ -21,6 +21,7 @@ import SearchForm from '~containers/search-form/SearchForm';
 import Content from './components/content/Content';
 import Home from './components/home/Home';
 import asyncComponent from './components/async-component/AsyncComponent';
+import ToggleBurger from './components/toogle-burger/ToggleBurger';
 
 import * as styles from './App.scss';
 
@@ -32,6 +33,7 @@ interface Props {
 
 interface State {
   searchQuery: string;
+  sideOpen: boolean;
 }
 
 const mapStateToProps = ({ sections, selectedEdition }: StoreState) => {
@@ -64,7 +66,8 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      searchQuery: ''
+      searchQuery: '',
+      sideOpen: false
     };
   }
 
@@ -74,18 +77,28 @@ class App extends React.Component<Props, State> {
   }
 
   render() {
+    let sideMenuOpen = this.state.sideOpen;
+    let bodyWrapperClasses = [styles.bodyWrapper];
+    let bodySideMenuClasses = [styles.bodySidemenu];
+    if (sideMenuOpen) {
+      bodyWrapperClasses.push('open');
+      bodyWrapperClasses.push(styles.open);
+      bodySideMenuClasses.push(styles.bodySidemenuOpen);
+    }
+
     return (
-      <div className={styles.bodyWrapper}>
+      <div className={bodyWrapperClasses.join(' ')}>
         <Router>
           <div className={styles.bodyInner}>
-            <aside className={styles.bodySidemenu}>
+            <aside className={bodySideMenuClasses.join(' ')}>
               <SideMenu />
             </aside>
             <div id="pageBody" ref={ref => this.bodyMainContainer = ref} className={styles.bodyMain}>
               <header className={styles.bodyHeader}>
                 <div className="container">
                   <div className={styles.headerInner}>
-                    <div className="layout sm ms_j-end">
+                    <div className="layout sm ms_j-between ms_d-row-reverse">
+                      <ToggleBurger open={this.state.sideOpen} toggle={(event) => this.toggleSide(event)} />
                       <SearchForm extent="small"/>
                     </div>
                   </div>
@@ -95,7 +108,6 @@ class App extends React.Component<Props, State> {
               <main className={styles.bodyContent}>
                 <div className="container" >
                   <Route exact={true} path="/" component={Home} />
-                  {/* <Route exact={true} path="/details/:id" component={(props) => <Articles />} /> */}
                   <Route exact={true} path="/articles/:id" component={AsyncArticles} />
                   <Route exact={true} path="/search" component={AsyncSearch} />
                 </div>
@@ -103,13 +115,13 @@ class App extends React.Component<Props, State> {
             </div>
           </div>
         </Router>
+        <div onClick={() => this.toggleSide(false)} className={styles.bodyBackdrop}>&nbsp;</div>
       </div>
     );
   }
 
-  private searchSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    console.log(this.props);
+  private toggleSide(value: boolean) {
+    this.setState({ sideOpen: value });
   }
 }
 

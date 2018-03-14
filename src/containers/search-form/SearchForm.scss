@@ -5,7 +5,8 @@
   outline: none;
   padding:  8px 0 ;
   border-bottom: solid 1px $gray3;
-
+  width: 190px;
+  
   &:focus {
     border-color: $gray5;
   }

@@ -24,6 +24,7 @@ interface Props {
   setSections: () => void;
   sections: Section[];
   selectedEdition: SelectedEdition;
+  close: () => void;
 }
 
 const mapStateToProps = ({ sections, selectedEdition }: StoreState) => {
