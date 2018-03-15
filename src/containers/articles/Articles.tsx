@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Actions.Actions>) => {
     setEdition: (id: string) => {
       service.getEdition(id).then((response: AxiosResponse) => {
         dispatch(Actions.setSelectedEdition(response.data.response));
-        scroller.scrollTo('heading', { containerId: 'pageBody', offset: -50 });
+        scroller.scrollTo('heading', { containerId: 'pageBody', offset: -100 });
       });
     }
   };

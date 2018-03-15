@@ -42,8 +42,10 @@ $sideMenuWidth: 250px;
 
 .bodyMain {
   position: relative;
-  height: 100vh;
-  overflow: hidden;
+  height: calc(100vh - 52px);
+  overflow: hidden; 
+  margin-top: 52px;
+  padding: 60px 0 120px;
 
   @include mq('ts') {
     margin-left: $sideMenuWidth;
@@ -52,23 +54,24 @@ $sideMenuWidth: 250px;
 
 .bodyHeader {
   font-weight: 700;
-  padding: 15px 0;
+  padding: 8px 0;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background-color: $F;
-  border-bottom: solid 1px $gray3;
+  border-bottom: solid 1px $gray2;
   z-index: z('header');
 
   @include mq('ts') {
-    position: relative;
-    border-bottom: none;
+    // position: relative;
+    // border-bottom: none;
   }
 }
 
 .bodyContent {
   color: inherit;
+  
 }
 
 .headerInner {

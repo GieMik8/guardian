@@ -77,9 +77,10 @@ To Serve this folder:
 serve -s build
 ```
 
-The console should show that a local server is up and ready to use.
+The console should show that a local server is up and ready to access.
 
 # Next steps
 
 * Writing tests
 * Support & improvements for other browser
+* Loading animations
