@@ -5,6 +5,9 @@ Simple [Guardian API](http://open-platform.theguardian.com/) application using [
 * a project with React and TypeScript
 * linting with [TSLint](https://github.com/palantir/tslint)
 * state management with [Redux](https://github.com/reactjs/react-redux)
+* SCSS modules
+* Routing with [React router](https://github.com/ReactTraining/react-router)
+* SVG icons
 
 # Install dependencies
 
@@ -69,7 +72,7 @@ but it is useful if you need to measure things like the final size of your app.
 
 # Serve already built project
 
-Ready project is already built and ready to preview in `"/build"` folder.
+Project is already built and ready to preview in `"/build"` folder.
 
 To Serve this folder:
 
