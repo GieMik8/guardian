@@ -1,4 +1,3 @@
-/* This is style definitions - keep this file untouched */
 export const bodyWrapper: string;
 export const bodyInner: string;
 export const bodySidemenu: string;

@@ -1,4 +1,3 @@
-/* This is style definitions - keep this file untouched */
 export const sideMenu: string;
 export const item: string;
 export const activeItem: string;

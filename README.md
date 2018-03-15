@@ -18,14 +18,6 @@ or
 npm install
 ```
 
-# Attention!
-
-In order to use this project, after installing dependencies deleting a specific dependency is a must.
-
-Delete this folder: `node_modules/@types/react-dom/node_modules`
-
-This is typescript related bug - dependencies of typings doesn't match. This should be fixed shortly. As soon as this behaviour will be fixed this note will be removed.
-
 # Startup development
 
 ```shell
