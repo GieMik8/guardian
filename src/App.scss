@@ -64,14 +64,12 @@ $sideMenuWidth: 250px;
   z-index: z('header');
 
   @include mq('ts') {
-    // position: relative;
-    // border-bottom: none;
+    margin-left: $sideMenuWidth;
   }
 }
 
 .bodyContent {
   color: inherit;
-  
 }
 
 .headerInner {

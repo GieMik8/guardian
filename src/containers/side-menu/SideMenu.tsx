@@ -20,12 +20,20 @@ interface State {
   version: number;
 }
 
-interface Props {
+interface PropsFromDispatch {
   setSections: () => void;
+}
+
+interface PropsFromState {
   sections: Section[];
   selectedEdition: SelectedEdition;
-  close: () => void;
 }
+
+interface Props {
+  closeSideMenu: () => void;
+}
+
+interface AllProps extends Props, PropsFromState, PropsFromDispatch {}
 
 const mapStateToProps = ({ sections, selectedEdition }: StoreState) => {
   return { sections, selectedEdition };
@@ -41,12 +49,12 @@ const mapDispatchToProps = (dispatch: Dispatch<Actions.Actions>) => {
   };
 };
 
-class SideMenu extends React.Component<Props, State> {
+class SideMenu extends React.Component<AllProps, State> {
   // tslint:disable-next-line: no-any
   private sideMenuContainer: any;
   private sideMenuScrollbar: PerfectScrollbar;
 
-  constructor(props: Props) {
+  constructor(props: AllProps) {
     super(props);
     this.state = {
       slogan: settings.SLOGAN,
@@ -69,9 +77,9 @@ class SideMenu extends React.Component<Props, State> {
           to={`/articles/${x.id}`}
           className={linkClasses}
           key={index}
+          onClick={() => this.props.closeSideMenu()}
         >
           <span className={styles.itemTitle}>{x.webTitle}</span>
-          {/* <span className={styles.itemSubtitle}>{x.id}</span> */}
         </Link>
       );
     });
@@ -85,7 +93,7 @@ class SideMenu extends React.Component<Props, State> {
 
     return (
       <div className={styles.sideMenu}>
-        <Link to="/">
+        <Link to="/" onClick={() => this.props.closeSideMenu()}>
           <div className={styles.heading + ' ms_t-center'}>
             <Icon classes={[styles.logo]} icon={Logo}/>
             <h2 className={styles.slogan}>{this.state.slogan}</h2>
@@ -102,5 +110,4 @@ class SideMenu extends React.Component<Props, State> {
   }
 }
 
-// tslint:disable-next-line: no-any
-export default connect(mapStateToProps, mapDispatchToProps)(SideMenu as any);
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu as React.ComponentClass<AllProps>);

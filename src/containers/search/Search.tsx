@@ -100,4 +100,4 @@ class Search extends React.Component<RouteComponentProps<RouteParams> & Props, S
 }
 
 // tslint:disable-next-line: no-any
-export default connect(mapStateToProps, mapDispatchToProps)(Search as any);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

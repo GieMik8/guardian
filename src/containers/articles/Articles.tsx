@@ -90,5 +90,4 @@ class Articles extends React.Component<RouteComponentProps<RouteParams> & Props,
   }
 }
 
-// tslint:disable-next-line: no-any
-export default connect(mapStateToProps, mapDispatchToProps)(Articles as any);
+export default connect(mapStateToProps, mapDispatchToProps)(Articles);

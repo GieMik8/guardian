@@ -91,7 +91,7 @@ class App extends React.Component<Props, State> {
         <Router>
           <div className={styles.bodyInner}>
             <aside className={bodySideMenuClasses.join(' ')}>
-              <SideMenu />
+              <SideMenu closeSideMenu={() => this.toggleSide(false)} />
             </aside>
             <div id="pageBody" ref={ref => this.bodyMainContainer = ref} className={styles.bodyMain}>
               <header className={styles.bodyHeader}>
